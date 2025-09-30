@@ -10,19 +10,19 @@ const data=[
         opt:["Multan", "Karachi", "Rawalpindi", "Islamabad"]
     },
      {
-        q:"what is the capital of india?",
-        a:"new delhi",
-        opt:["jaipur","mumbai","new delhi","pune"]
+        q:"What is the capital of Afghanistan?",
+        a:"Kabul",
+        opt:["Kabul", "Kandhar", "Zaranj", "Sangin"]
     },
      {
-        q:"what is the capital of india?",
-        a:"new delhi",
-        opt:["jaipur","mumbai","new delhi","pune"]
+        q:"What is the capital of Japan?",
+        a:"Tokyo",
+        opt:["Kyoto", "Nagasaki", "Tokyo", "Hiroshima"]
     },
      {
-        q:"what is the capital of india?",
-        a:"new delhi",
-        opt:["jaipur","mumbai","new delhi","pune"]
+        q:"What is the capital of China?",
+        a:"Beijing",
+        opt:["Beijing", "Chengdu", "Shanghai", "Chonginq"]
     },
 ]
 

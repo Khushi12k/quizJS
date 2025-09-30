@@ -1,0 +1,22 @@
+@media (max-width: 475px) {
+    .quiz {
+        height: 100vh;
+    }
+    .timer {
+        top:1rem;
+        width: 20px;
+        height: 20px;
+        right:0rem;
+    }
+}
+@media (max-width:1024px){
+    .quiz {
+        height: 100vh;
+    }
+    .timer {
+        top:1rem;
+        width: 20px;
+        height: 20px;
+        right:0rem;
+    }
+}
