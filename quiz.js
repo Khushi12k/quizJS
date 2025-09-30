@@ -70,10 +70,10 @@ option.forEach(opt => {
 
 opt.addEventListener("click",()=>{
     if(opt.innerText===data[questionNumber].a){
-        opt.style.backgroundColor="red"
+        opt.style.backgroundColor="green"
     }
     else{
-        opt.style.backgroundColor="grey"
+        opt.style.backgroundColor="red"
     }
 })
     
