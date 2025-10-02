@@ -62,16 +62,18 @@ function printQuestionsAndOptions() {
     questions.innerText = data[questionNumber].q
     option.forEach(
         (opt, index) => (opt.innerText = data[questionNumber].opt[index])
-
-    )
+)
 
     option.forEach((opt) => {
         opt.style.backgroundColor = "lightBlue";
         
         opt.addEventListener("click", () => {
+
+            option.forEach((opt) => {
+             opt.style.pointerEvents="none"})
+
             if (opt.innerText === data[questionNumber].a) {
                 opt.style.backgroundColor = "green"
-                
                 
             }
             else {
@@ -89,6 +91,8 @@ function printQuestionsAndOptions() {
         })
 
     })
+
+  
 }
 
 
