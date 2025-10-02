@@ -53,3 +53,11 @@ text-transform: capitalize;
 margin: 10px;
 font-weight: bold;
 }
+.nextbtn{
+    background: blue;
+    color:white;
+    padding: 6px 14px;
+    border: none;
+    margin: auto;
+
+}

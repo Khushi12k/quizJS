@@ -32,6 +32,7 @@ const options = document.querySelector(".options")
 const option = document.querySelectorAll(".option")
 const score = document.querySelector(".score span")
 const questions = document.querySelector(".questions")
+const btn=document.querySelector(".nextbtn")
 
 let count = 5;
 let questionNumber = 0;
@@ -63,13 +64,12 @@ function printQuestionsAndOptions() {
     option.forEach(
         (opt, index) => (opt.innerText = data[questionNumber].opt[index])
 )
-
-    option.forEach((opt) => {
-        opt.style.backgroundColor = "lightBlue";
+ option.forEach((opt) => {
+ opt.style.backgroundColor = "lightBlue";
+ opt.style.pointerEvents="auto"
         
-        opt.addEventListener("click", () => {
-
-            option.forEach((opt) => {
+     opt.addEventListener("click", () => {
+       option.forEach((opt) => {
              opt.style.pointerEvents="none"})
 
             if (opt.innerText === data[questionNumber].a) {
@@ -85,15 +85,20 @@ function printQuestionsAndOptions() {
                      
             }
                 })
-
-
             }
         })
 
     })
+   
 
   
 }
+ btn.addEventListener("click", ()=>{
+        // counter=5;
+        timer.textContent=5;
+        questionNumber++;
+        printQuestionsAndOptions()
+     })
 
 
 
