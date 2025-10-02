@@ -66,19 +66,21 @@ function printQuestionsAndOptions() {
     )
 
     option.forEach((opt) => {
-        opt.style.backgroundColor = "";
-
+        opt.style.backgroundColor = "lightBlue";
+        
         opt.addEventListener("click", () => {
             if (opt.innerText === data[questionNumber].a) {
                 opt.style.backgroundColor = "green"
+                
+                
             }
             else {
                 opt.style.backgroundColor = "red"
-
+            
                 option.forEach((o)=>{
                      if (o.innerText === data[questionNumber].a) {
                      o.style.backgroundColor = "green"
-                
+                     
             }
                 })
 
