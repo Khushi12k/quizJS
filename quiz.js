@@ -44,12 +44,9 @@ printQuestionsAndOptions();
 let time = setInterval(() => {
     if (count === 1) {
 
-        if (questionNumber >=data.length)
+        if (questionNumber >=data.length - 1)
              {
-            // clearInterval(time);
-            // timer.style.display = "none"
-            // options.style.display = "none"
-            // questions.style.display = "none"
+           
             scoreQuiz()
             return
         }
@@ -68,55 +65,49 @@ let time = setInterval(() => {
 }, 1000);
 
 
+
+
 function printQuestionsAndOptions() {
-    questions.innerText = data[questionNumber].q
-    option.forEach(
-        (opt, index) => (opt.innerText = data[questionNumber].opt[index])
-)
- option.forEach((opt) => {
- opt.style.backgroundColor = "lightBlue";
- opt.style.pointerEvents="auto"
-        
-     opt.addEventListener("click", () => {
-       option.forEach((opt) => {
-             opt.style.pointerEvents="none"})
-
-            if (opt.innerText=== data[questionNumber].a) {
-                opt.style.backgroundColor = "green"
-                 userScore++;
-    score.textContent = userScore;
-                
-            }
-                else {
-                opt.style.backgroundColor = "red"
-            
-                option.forEach((o)=>{
-                     if (o.innerText === data[questionNumber].a) {
-                     o.style.backgroundColor = "green"
-                     
-            }
-        
-                })
-            }
-        })
-
-    })
+    questions.innerText = data[questionNumber].q;
+    option.forEach((opt, index) => {
+        opt.innerText = data[questionNumber].opt[index];
+        opt.style.backgroundColor = "lightBlue";
+        opt.style.pointerEvents = "auto";
+    });
 }
- btn.addEventListener("click", ()=>{
-        count=5;
-        timer.textContent=5;
-        
-        questionNumber++;
-        printQuestionsAndOptions()
-        
-    if(questionNumber>=data.length){
-          scoreQuiz()
-          return;
-       
-    }
-     
 
+
+option.forEach((opt) => {
+    opt.addEventListener("click", () => {
+        option.forEach((o) => (o.style.pointerEvents = "none"));
+
+        if (opt.innerText === data[questionNumber].a) {
+            opt.style.backgroundColor = "green";
+            userScore++;
+            score.textContent = userScore;
+        } else {
+            opt.style.backgroundColor = "red";
+            option.forEach((o) => {
+                if (o.innerText === data[questionNumber].a) {
+                    o.style.backgroundColor = "green";
+                }
+            });
+        }
+    });
 });
+
+btn.addEventListener("click", () => {
+    if (questionNumber >= data.length - 1) {  
+        scoreQuiz();
+        return;
+    }
+    count = 5;
+    timer.textContent = 5;
+    questionNumber++;
+    printQuestionsAndOptions();
+});
+
+
 
 function scoreQuiz() {
     clearInterval(time);
@@ -127,18 +118,7 @@ function scoreQuiz() {
     quiz.innerText = "Your final score: " + userScore;
 }
 
-// function scoreCount(){
-// if (opt.innerText=== data[questionNumber].a) {
-//            score++;
-//            clearInterval(time)
-//         btn.disabled = true
-//         }
 
-//   else{
-            
-//         quiz.innerHTML = "your score"+score
-        
-//       }}
 
 
 
