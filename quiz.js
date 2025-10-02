@@ -94,8 +94,9 @@ function printQuestionsAndOptions() {
   
 }
  btn.addEventListener("click", ()=>{
-        // counter=5;
+        count=5;
         timer.textContent=5;
+       
         questionNumber++;
         printQuestionsAndOptions()
      })
