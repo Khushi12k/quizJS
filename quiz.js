@@ -82,7 +82,7 @@ function printQuestionsAndOptions() {
             if (opt.innerText=== data[questionNumber].a) {
                 opt.style.backgroundColor = "green"
                  userScore++;
-    scoreElement.textContent = userScore;
+    score.textContent = userScore;
                 
             }
                 else {
@@ -93,8 +93,7 @@ function printQuestionsAndOptions() {
                      o.style.backgroundColor = "green"
                      
             }
-          
-
+        
                 })
             }
         })
@@ -110,7 +109,7 @@ function printQuestionsAndOptions() {
         
     if(questionNumber===data.length){
           scoreQuiz()
-          return
+          return;
        
     }
      
