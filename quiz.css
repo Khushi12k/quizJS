@@ -56,8 +56,16 @@ font-weight: bold;
 .nextbtn{
     background: blue;
     color:white;
-    padding: 6px 14px;
+    padding: 1rem 5rem;
     border: none;
-    margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 37%;
+   margin-top: 20px;
+   border-radius: 10px;
+    
+
+    
 
 }

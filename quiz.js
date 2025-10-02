@@ -72,7 +72,7 @@ function printQuestionsAndOptions() {
        option.forEach((opt) => {
              opt.style.pointerEvents="none"})
 
-            if (opt.innerText === data[questionNumber].a) {
+            if (opt.innerText=== data[questionNumber].a) {
                 opt.style.backgroundColor = "green"
                 
             }
