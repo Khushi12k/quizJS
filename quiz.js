@@ -36,7 +36,7 @@ const btn=document.querySelector(".nextbtn")
 
 let count = 5;
 let questionNumber = 0;
-let userscore=0
+let userScore=0
 
 
 printQuestionsAndOptions();
@@ -44,12 +44,14 @@ printQuestionsAndOptions();
 let time = setInterval(() => {
     if (count === 1) {
 
-        if (questionNumber === data.length)
+        if (questionNumber >=data.length)
              {
-            clearInterval(time);
-            timer.style.display = "none"
-            options.style.display = "none"
-            questions.style.display = "none"
+            // clearInterval(time);
+            // timer.style.display = "none"
+            // options.style.display = "none"
+            // questions.style.display = "none"
+            scoreQuiz()
+            return
         }
         count = 5;
         timer.textContent = 5;
@@ -107,7 +109,7 @@ function printQuestionsAndOptions() {
         questionNumber++;
         printQuestionsAndOptions()
         
-    if(questionNumber===data.length){
+    if(questionNumber>=data.length){
           scoreQuiz()
           return;
        
