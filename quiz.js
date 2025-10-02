@@ -36,12 +36,16 @@ const btn=document.querySelector(".nextbtn")
 
 let count = 5;
 let questionNumber = 0;
+let userscore=0
+
 
 printQuestionsAndOptions();
 
 let time = setInterval(() => {
     if (count === 1) {
-        if (questionNumber === data.length) {
+
+        if (questionNumber === data.length)
+             {
             clearInterval(time);
             timer.style.display = "none"
             options.style.display = "none"
@@ -52,10 +56,13 @@ let time = setInterval(() => {
         questionNumber++;
         printQuestionsAndOptions()
 
-    } else {
+    }
+     else {
         count--;
         timer.textContent = count;
     }
+    
+
 }, 1000);
 
 
@@ -74,9 +81,11 @@ function printQuestionsAndOptions() {
 
             if (opt.innerText=== data[questionNumber].a) {
                 opt.style.backgroundColor = "green"
+                 userScore++;
+    scoreElement.textContent = userScore;
                 
             }
-            else {
+                else {
                 opt.style.backgroundColor = "red"
             
                 option.forEach((o)=>{
@@ -84,22 +93,56 @@ function printQuestionsAndOptions() {
                      o.style.backgroundColor = "green"
                      
             }
+          
+
                 })
             }
         })
 
     })
-   
-
-  
 }
  btn.addEventListener("click", ()=>{
         count=5;
         timer.textContent=5;
-       
+        
         questionNumber++;
         printQuestionsAndOptions()
-     })
+        
+    if(questionNumber===data.length){
+          scoreQuiz()
+          return
+       
+    }
+     
+
+});
+
+function scoreQuiz() {
+    clearInterval(time);
+    timer.style.display = "none";
+    options.style.display = "none";
+    questions.style.display = "none";
+    btn.disabled = true;
+    quiz.innerText = "Your final score: " + userScore;
+}
+
+// function scoreCount(){
+// if (opt.innerText=== data[questionNumber].a) {
+//            score++;
+//            clearInterval(time)
+//         btn.disabled = true
+//         }
+
+//   else{
+            
+//         quiz.innerHTML = "your score"+score
+        
+//       }}
+
+
+
+     
+
 
 
 
