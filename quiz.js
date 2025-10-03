@@ -31,43 +31,43 @@ const timer = document.querySelector(".timer")
 const options = document.querySelector(".options")
 const option = document.querySelectorAll(".option")
 const score = document.querySelector(".score span")
+
 const questions = document.querySelector(".questions")
-const btn=document.querySelector(".nextbtn")
+const btn = document.querySelector(".nextbtn")
 
 let count = 5;
 let questionNumber = 0;
-let userScore=0
+let userScore = 0
 
 
 printQuestionsAndOptions();
 
+
+
 let time = setInterval(() => {
     if (count === 1) {
+       
+        if (questionNumber >= data.length - 1) {
 
-        if (questionNumber >=data.length - 1)
-             {
-           
             scoreQuiz()
             return
         }
         count = 5;
         timer.textContent = 5;
         questionNumber++;
-        printQuestionsAndOptions()
+        // questionNumber=randomNumber()
+         printQuestionsAndOptions()
 
     }
-     else {
+    else {
         count--;
         timer.textContent = count;
     }
-    
-
 }, 1000);
 
 
-
-
 function printQuestionsAndOptions() {
+    // questionNumber=randomNumber()
     questions.innerText = data[questionNumber].q;
     option.forEach((opt, index) => {
         opt.innerText = data[questionNumber].opt[index];
@@ -79,6 +79,7 @@ function printQuestionsAndOptions() {
 
 option.forEach((opt) => {
     opt.addEventListener("click", () => {
+
         option.forEach((o) => (o.style.pointerEvents = "none"));
 
         if (opt.innerText === data[questionNumber].a) {
@@ -97,16 +98,15 @@ option.forEach((opt) => {
 });
 
 btn.addEventListener("click", () => {
-    if (questionNumber >= data.length - 1) {  
+    if (questionNumber >= data.length - 1) {
         scoreQuiz();
         return;
     }
     count = 5;
     timer.textContent = 5;
-    questionNumber++;
+    questionNumber=randomNumber();
     printQuestionsAndOptions();
 });
-
 
 
 function scoreQuiz() {
@@ -114,19 +114,16 @@ function scoreQuiz() {
     timer.style.display = "none";
     options.style.display = "none";
     questions.style.display = "none";
-    btn.disabled = true;
-    quiz.innerText = "Your final score: " + userScore;
+    // btn.disabled = true;
+    // quiz.innerText = "Your score: " + userScore;
+    quiz.appendChild(score.parentElement);
+    score.innerHTML = userScore
+
+    btn.style.display = "none";
 }
 
-
-
-
-
-     
-
-
-
-
-
-
-
+function randomNumber() {
+    let question = Math.floor(Math.random() * data.length);
+    // questionNumber++
+    return question
+}
