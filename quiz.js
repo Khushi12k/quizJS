@@ -37,9 +37,10 @@ const btn = document.querySelector(".nextbtn")
 
 let count = 5;
 let questionNumber = 0;
+let ques=[]
+
 let userScore = 0
-
-
+random()
 printQuestionsAndOptions();
 
 
@@ -55,8 +56,9 @@ let time = setInterval(() => {
         count = 5;
         timer.textContent = 5;
         questionNumber++;
-        // questionNumber=randomNumber()
+        random()
          printQuestionsAndOptions()
+         
 
     }
     else {
@@ -67,10 +69,11 @@ let time = setInterval(() => {
 
 
 function printQuestionsAndOptions() {
+
     // questionNumber=randomNumber()
-    questions.innerText = data[questionNumber].q;
+    questions.innerText = ques[questionNumber].q;
     option.forEach((opt, index) => {
-        opt.innerText = data[questionNumber].opt[index];
+        opt.innerText = ques[questionNumber].opt[index];
         opt.style.backgroundColor = "lightBlue";
         opt.style.pointerEvents = "auto";
     });
@@ -82,14 +85,15 @@ option.forEach((opt) => {
 
         option.forEach((o) => (o.style.pointerEvents = "none"));
 
-        if (opt.innerText === data[questionNumber].a) {
+        if (opt.innerText === ques[questionNumber].a) {
             opt.style.backgroundColor = "green";
             userScore++;
             score.textContent = userScore;
         } else {
+
             opt.style.backgroundColor = "red";
             option.forEach((o) => {
-                if (o.innerText === data[questionNumber].a) {
+                if (o.innerText === ques[questionNumber].a) {
                     o.style.backgroundColor = "green";
                 }
             });
@@ -98,14 +102,17 @@ option.forEach((opt) => {
 });
 
 btn.addEventListener("click", () => {
-    if (questionNumber >= data.length - 1) {
+    if (questionNumber >= data.length-1) {
         scoreQuiz();
         return;
     }
+    else{
     count = 5;
     timer.textContent = 5;
-    questionNumber=randomNumber();
+    questionNumber++;
+    random()
     printQuestionsAndOptions();
+    }
 });
 
 
@@ -114,16 +121,18 @@ function scoreQuiz() {
     timer.style.display = "none";
     options.style.display = "none";
     questions.style.display = "none";
-    // btn.disabled = true;
-    // quiz.innerText = "Your score: " + userScore;
     quiz.appendChild(score.parentElement);
     score.innerHTML = userScore
-
     btn.style.display = "none";
 }
-
-function randomNumber() {
-    let question = Math.floor(Math.random() * data.length);
-    // questionNumber++
-    return question
+ 
+function random() {
+    let randomQuestion= Math.floor(Math.random() * data.length);
+    if(ques.includes(data[randomQuestion])){
+    return random()
 }
+else{
+    ques.push(data[randomQuestion])
+}
+}
+
